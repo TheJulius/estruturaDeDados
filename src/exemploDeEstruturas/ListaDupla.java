@@ -1,4 +1,4 @@
-package lista2;
+package exemploDeEstruturas;
 
 public class ListaDupla {
 	private NodoDuplo inicio = null;

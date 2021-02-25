@@ -1,6 +1,6 @@
-package lista2;
+package exemploDeEstruturas;
 
-public class ListaCircular {
+public class Lista {
 	private Nodo inicio = null;
 	private Nodo fim = null;
 	private Nodo aux = null;
@@ -13,7 +13,7 @@ public class ListaCircular {
 			//a lista está vazia e o elemento será o primeiro e o último
 			inicio = novo;
 			fim = novo;
-			fim.prox = inicio;
+			novo.prox = null;
 		}
 		else
 		{
@@ -21,7 +21,6 @@ public class ListaCircular {
 			//será inserido no início da lista
 			novo.prox = inicio;
 			inicio = novo;
-			fim.prox = inicio;
 		}
 		System.out.println("Valor inserido com sucesso!!");
 	}
@@ -34,31 +33,13 @@ public class ListaCircular {
 		{
 			System.out.println("Mostrando toda a lista");
 			aux = inicio;
-			do{
+			while (aux !=null){
 				System.out.println(aux.num);
 				aux = aux.prox;
-			}while (aux !=inicio);
+			}
 		}
 	}
-	public void inserirFinal(int num){
-		Nodo novo = new Nodo();
-		novo.num = num;
-		if (inicio == null){
-			//a lista está vazia e o elemento será o primeiro e o último
-			inicio = novo;
-			fim = novo;
-			fim.prox = inicio;
-		}
-		else
-		{
-			//a lista contém elementos e o novo elemento
-			//será inserido no fim da lista
-			fim.prox = novo;
-			fim = novo;
-			fim.prox = inicio;
-		}
-		System.out.println("Número inserido no fim da lista");
-	}	
+	
 	public void removerNodo(int num){
 		int achou = 0;
 		if (inicio == null){
@@ -70,22 +51,18 @@ public class ListaCircular {
 			//removido foi passado como parâmetro
 			aux = inicio;
 			anterior = null;
-			do{
+			while (aux !=null){
 				if (aux.num == num){
 					achou++;
 					//o número foi encontrado na lista e será removido
-					if (inicio == fim){
-						inicio= null;
-					}
 					if (aux == inicio){
 						inicio = aux.prox;
-						fim.prox = inicio;
 						aux = inicio;
 					}
 					else if(aux == fim){
+						anterior.prox = null;
 						fim = anterior;
-						fim.prox = inicio;
-						aux = aux.prox;
+						aux=  null;
 					}
 					else
 					{
@@ -98,8 +75,7 @@ public class ListaCircular {
 					anterior = aux;
 				    aux= aux.prox;	
 				}
-			
-			}while (aux !=inicio);
+			}
 		}	
 		if (achou == 0){
 			System.out.println("Número não encontrado");
@@ -110,4 +86,3 @@ public class ListaCircular {
 		}
 	  }
 	}
-

@@ -1,4 +1,4 @@
-package lista2;
+package exemploDeEstruturas;
 
 public class ListaDuplaCircular {
 	private NodoDuplo inicio = null;
@@ -42,7 +42,7 @@ public class ListaDuplaCircular {
 			}while (aux !=inicio);
 		}
 	}
-public void inserirFinal(int num){
+	public void inserirFinal(int num){
 		NodoDuplo novo = new NodoDuplo();
 		novo.num = num;
 		if (inicio == null){
@@ -64,57 +64,57 @@ public void inserirFinal(int num){
 		}
 		System.out.println("Número inserido no fim da lista");
 	}	
-public void removerNodo(int num){
-	int achou = 0;
-	if (inicio == null){
-		System.out.println("Lista vazia");
-	}
-	else
-	{
-		aux = inicio;
-		int quantidade = 0;
-		int contador = 0;
-		//aqui
-		do{
-			quantidade++;
-			aux = aux.prox;
-		}while (aux!=inicio);
-		//a lista contém elementos e o elemento a ser
-		//removido foi passado como parâmetro
-		do{
-			if (aux.num == num){
-				achou++;
-				//o número foi encontrado na lista e será removido
-				if (inicio == fim){
-					inicio= null;
-					//aqui
-					fim = null;
-				}
-				else if (aux == inicio){
-					inicio = aux.prox;
-					inicio.ant = fim;
-					fim.prox = inicio;
-					aux = inicio;
-				}
-				else if(aux == fim){
-					fim = fim.ant;
-					fim.prox = inicio;
-					inicio.ant = fim;
+	public void removerNodo(int num){
+		int achou = 0;
+		if (inicio == null){
+			System.out.println("Lista vazia");
+		}
+		else
+		{
+			aux = inicio;
+			int quantidade = 0;
+			int contador = 0;
+			//aqui
+			do{
+				quantidade++;
+				aux = aux.prox;
+			}while (aux!=inicio);
+			//a lista contém elementos e o elemento a ser
+			//removido foi passado como parâmetro
+			do{
+				if (aux.num == num){
+					achou++;
+					//o número foi encontrado na lista e será removido
+					if (inicio == fim){
+						inicio= null;
+						//aqui
+						fim = null;
+					}
+					else if (aux == inicio){
+						inicio = aux.prox;
+						inicio.ant = fim;
+						fim.prox = inicio;
+						aux = inicio;
+					}
+					else if(aux == fim){
+						fim = fim.ant;
+						fim.prox = inicio;
+						inicio.ant = fim;
+					}
+					else
+					{
+						aux.ant.prox = aux.prox;
+						aux.prox.ant = aux.ant;
+						aux = aux.prox;
+					}
 				}
 				else
 				{
-					aux.ant.prox = aux.prox;
-					aux.prox.ant = aux.ant;
-					aux = aux.prox;
+				    aux= aux.prox;	
 				}
-			}
-			else
-			{
-			    aux= aux.prox;	
-			}
-			contador++;
-		}while (contador <=quantidade);
-	}	
+				contador++;
+			}while (contador <=quantidade);
+		}	
 	if (achou == 0){
 		System.out.println("Número não encontrado");
 	}

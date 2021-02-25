@@ -1,4 +1,4 @@
-package lista2;
+package exemploDeEstruturas;
 
 public class Nodo {
 	public int num;
